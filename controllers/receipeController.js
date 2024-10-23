@@ -25,7 +25,7 @@ const getReceipes = async (req, res) => {
 
 const getReceipe =async (req, res) => {
     try {
-        const receipeId = await req.params.receipeId
+        const receipeId = await req.params.id
         const receipe = await Receipes.findById(receipeId)
         res.status(200).json(receipe)
     } catch (error) {
