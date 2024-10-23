@@ -58,4 +58,26 @@ const deleteReceipe = async (req, res) => {
     }
 };
 
-export default {createReceipe, getReceipes, getReceipe, deleteReceipe};
+const updateReceipe = async (req, res) => {
+    try {
+        const recipeId = req.params.id;
+        const updatedData = req.body;
+        
+        const updatedRecipe = await Receipes.findByIdAndUpdate(recipeId, updatedData, { new: true });
+        
+        if (!updatedRecipe) {
+            return res.status(404).json({ error: "Recipe not found" });
+        }
+        
+        res.status(200).json(updatedRecipe);
+    } catch (error) {
+        if (error.kind === "ObjectId") {
+            res.status(400).json({ error: "Invalid recipe ID provided" });
+        } else {
+            res.status(500).json({ error: "An error was encountered" });
+        }
+    }
+};
+
+
+export default {createReceipe, getReceipes, getReceipe, deleteReceipe, updateReceipe};
