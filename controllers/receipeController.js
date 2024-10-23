@@ -9,7 +9,7 @@ const createReceipe = async (req, res) => {
     }
 }
 
-const getReceipe = async (req, res) => {
+const getReceipes = async (req, res) => {
     try {
         const {page = 1, limit = 5} = req.query
         const skip = (page -1)* limit;
@@ -23,5 +23,18 @@ const getReceipe = async (req, res) => {
     }
 }
 
+const getReceipe =async (req, res) => {
+    try {
+        const receipeId = await req.params.receipeId
+        const receipe = await Receipes.findById(receipeId)
+        res.status(200).json(receipe)
+    } catch (error) {
+        if(error.kind === "ObjectId"){
+            res.status(400).json({error:"Invalid receipe ID provided"})
+        } else{
+            res.status(500).json({error:"An error is encounters"})
+        }
+    }
+}
 
-export default {createReceipe, getReceipe};
+export default {createReceipe, getReceipes, getReceipe};
