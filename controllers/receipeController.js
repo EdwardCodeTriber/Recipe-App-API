@@ -1,4 +1,4 @@
-import Receipes from "../models/receipes"
+import Receipes from "../models/receipes.js"
 
 const createReceipe = async (req, res) => {
     try {
