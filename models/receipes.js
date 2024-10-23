@@ -1,6 +1,6 @@
-import mongoose, { mongo } from "mongoose";
+import mongoose from "mongoose";
 
-const itemSchema = new mongoose.Schema({
+const receipeSchema = new mongoose.Schema({
     name: {type: String, required: true},
     ingredients:{String, required: true},
     category: {type: String, required: true},
@@ -9,4 +9,4 @@ const itemSchema = new mongoose.Schema({
 
 })
 
-export default mongoose.model("Item", itemSchema)
+export default mongoose.model("Receipe", receipeSchema)
