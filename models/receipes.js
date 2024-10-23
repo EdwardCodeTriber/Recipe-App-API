@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-
+// Receipe Schema rules of datatypes
 const receipeSchema = new mongoose.Schema({
     name: {type: String, required: true},
     ingredients:{String},
@@ -8,5 +8,5 @@ const receipeSchema = new mongoose.Schema({
     createdAt: {type: Date, default: Date.now()}
 
 })
-
+//Exported model with the database Name
 export default mongoose.model("Receipe", receipeSchema)
