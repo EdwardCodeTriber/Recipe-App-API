@@ -1,8 +1,9 @@
 import express from "express"
-import createReceipe from "../controllers/receipeController.js";
+import receipeController from "../controllers/receipeController.js";
 
 const router = express.Router()
 
-router.post("/reciepe", createReceipe)
+router.post("/reciepe", receipeController.createReceipe)
+router.get("/reciepe", receipeController.getReceipe)
 
 export default router;
